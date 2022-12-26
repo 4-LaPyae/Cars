@@ -14,12 +14,16 @@ class CarResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
-            
+        return 
+            [
                 'id' => $this->id,
                 'name'=>$this->name,
                 'brand'=>$this->brand,
                 'country'=>$this->country,
+                'transmisstion'=>$this->transmisstion,
+                'equipment'=>$this->equipment,
+                'seller'=>$this->seller,
+                'standard'=>$this->standard,
                 'fuel_type'=>$this->fuel_type,
                 'mileage'=>$this->mileage,
                 'registration'=>$this->registration,
@@ -29,8 +33,7 @@ class CarResource extends JsonResource
                 'price'=>"$".$this->price,
                 'colour'=>$this->colour,
                 'damage'=>$this->damange,
-            
-            
-        ];
+                ]     
+        ;
     }
 }

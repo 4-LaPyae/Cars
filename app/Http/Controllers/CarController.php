@@ -17,21 +17,33 @@ class CarController extends Controller
      */
     public function index()
     {
-     $car = DB::table('cars')
-            ->join('brands','brands.id','=','cars.brand_id')
-            ->join('countries','countries.id','=','cars.country_id')
-            ->select('cars.id','cars.name','cars.fuel_type','cars.mileage','cars.registration','cars.engine_size','cars.power','cars.body_type','cars.price','cars.colour','cars.damange','brands.name as brand','countries.name as country')
+        $keyword = request("keyword");
+     $cars = DB::table('cars')
+            ->leftJoin('brands','brands.id','=','cars.brand_id')
+            ->leftJoin('countries','countries.id','=','cars.country_id')
+            ->leftJoin('transmisstions','transmisstions.id','=','cars.transmisstion')
+            ->leftJoin('equipment','equipment.id','=','cars.equipment_id')
+            ->leftJoin('sellers','sellers.id','=','cars.seller_id')
+            ->leftJoin('emisstions','emisstions.id','=','cars.emisstion_id')
+            ->select('cars.*','brands.name as brand',
+            'countries.name as country','transmisstions.name as transmisstion',
+            'equipment.name as equipment','sellers.name as seller','emisstions.standard as standard')
             ->get();
-    
-    return  CarResource::collection($car);
+        // $cars = Car::when($keyword,function($q,$keyword){
+        //     $q->where("name","like","%$keyword%");
+        // })->get();
+        //return $results;
+       // return view('carlists.index',compact('cars'));
+    //return view('carlists.index',compact('cars'));
+    //return  CarResource::collection($car);
 
     // $cars = CarResource::collection(Car::get());
     // return $cars;
-    // return response()->json([
-    //     "error"=>false,
-    //     "message"=>"cars lists",
-    //     "data"=>$cars
-    // ]);
+    return response()->json([
+        "error"=>false,
+        "message"=>"cars lists",
+        "data"=>$cars
+    ]);
 
     }
 
@@ -123,6 +135,6 @@ class CarController extends Controller
      */
     public function destroy(Car $car)
     {
-        //
+        
     }
 }
