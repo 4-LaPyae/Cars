@@ -85,9 +85,13 @@ class BrandsController extends Controller
      * @param  \App\Models\Brands  $brands
      * @return \Illuminate\Http\Response
      */
-    public function show(Brand $brands)
+    public function show(Brand $brand)
     {
-      return  $brands;
+        
+       return response()->json([
+        "brand"=>$brand->name,
+        "models"=>$brand->models
+       ]) ;
     }
 
     /**

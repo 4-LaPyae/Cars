@@ -28,7 +28,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('/cars',CarController::class);
-Route::apiResource('/car-brands',BrandsController::class);
+Route::apiResource('/brands',BrandsController::class);
 Route::apiResource('/car-models',CarModelController::class);
 Route::apiResource('/car-transmisstion',TransmisstionController::class);
 Route::apiResource('/car-equipments',EquipmentController::class);
