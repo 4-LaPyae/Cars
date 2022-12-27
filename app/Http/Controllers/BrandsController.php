@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\BrandResource;
+use App\Models\Brand;
 use App\Models\Brands;
 use App\Models\Car;
+use App\Models\Seller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BrandsController extends Controller
 {
@@ -15,16 +19,32 @@ class BrandsController extends Controller
      */
     public function index()
     {
-       return Brands::get();
+        $brand = request('make');
+        $brands = Brand::when($brand,function($q,$brand){
+                     $q->where("name","like","%$brand%");
+              })->get();
+        //return $brand;
+         $brands = BrandResource::collection($brands);
+
+    //    $brands = DB::table('brands')
+    //                 ->leftJoin('car_models','car_models.brand_id','=','brands.id')
+    //                 ->select('brands.name','car_models.name as model_name')
+    //                 ->get();
+    // return $brands;
+        //return BrandResource::collection($brands);
+       // return Brand::where('id',1)->get();
+        //dd($brands);
+        //return $brands;
         // $brand = request('brand');
         // $brand = Brands::when($brand,function($q,$brand){
         //          $q->where("name","like","%$brand%");
         //      })->get();
         // return $brand;
+        //return view('brands.index',compact('brands'));
         return response()->json([
             "error"=>false,
             "message"=>"brand lists",
-            "data"=>Brands::get()
+            "data"=>$brands
         ]);
     }
 
@@ -50,7 +70,7 @@ class BrandsController extends Controller
         $validator = $request->validate([
             "name"=>"required|string"
         ]);
-        $brands = Brands::create($validator);
+        $brands = Brand::create($validator);
         return response()->json([
             "error"=>false,
             "message"=>"brand is created.",
@@ -65,7 +85,7 @@ class BrandsController extends Controller
      * @param  \App\Models\Brands  $brands
      * @return \Illuminate\Http\Response
      */
-    public function show(Brands $brands)
+    public function show(Brand $brands)
     {
       return  $brands;
     }
@@ -76,7 +96,7 @@ class BrandsController extends Controller
      * @param  \App\Models\Brands  $brands
      * @return \Illuminate\Http\Response
      */
-    public function edit(Brands $brands)
+    public function edit(Brand $brands)
     {
         
     }
@@ -88,7 +108,7 @@ class BrandsController extends Controller
      * @param  \App\Models\Brands  $brands
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Brands $brands)
+    public function update(Request $request, Brand $brands)
     {
         return $brands;
     }
@@ -99,9 +119,9 @@ class BrandsController extends Controller
      * @param  \App\Models\Brands  $brands
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Brands $brands)
+    public function destroy($id)
     {
-        return $brands;
-        return Brands::where('id')->get();
+        //return $id;
+        return Brand::where('id',$id)->get();
     }
 }
