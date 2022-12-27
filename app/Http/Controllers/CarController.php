@@ -37,12 +37,12 @@ class CarController extends Controller
     //return view('carlists.index',compact('cars'));
     //return  CarResource::collection($car);
 
-    // $cars = CarResource::collection(Car::get());
+     $carlists = CarResource::collection($cars);
     // return $cars;
     return response()->json([
         "error"=>false,
         "message"=>"cars lists",
-        "data"=>$cars
+        "data"=>$carlists
     ]);
 
     }
@@ -112,7 +112,7 @@ class CarController extends Controller
      */
     public function edit(Car $car)
     {
-        //
+    
     }
 
     /**
@@ -122,9 +122,29 @@ class CarController extends Controller
      * @param  \App\Models\Car  $car
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Car $car)
+    public function update(Request $request,$id)
     {
-        //
+         $car = Car::findOrFail($id);
+        $validator = $request->validate([
+            "name"=>"required|string",
+            "brand_id"=>"required|integer",
+            "country_id"=>"required|integer",
+            "transmisstion"=>"required|integer",
+            "equipment_id"=>"required|integer",
+            "seller_id"=>"required|integer",
+            "emisstion_id"=>"required|integer",
+            "fuel_type"=>"required|string",
+            "mileage"=>"required",
+            "registration"=>"required|string",
+            "engine_size"=>"required|integer",
+            "power"=>"required|integer",
+            "body_type"=>"required|string",
+            "price"=>"required",
+            "colour"=>"required|string",
+            "damange"=>"required|string",
+        ]);
+        $car->update($validator);
+
     }
 
     /**
@@ -133,8 +153,9 @@ class CarController extends Controller
      * @param  \App\Models\Car  $car
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Car $car)
+    public function destroy($id)
     {
-        
+         $car = Car::findOrFail($id); 
+         $car->delete();       
     }
 }

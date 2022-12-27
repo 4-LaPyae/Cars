@@ -1,7 +1,8 @@
 <?php
-
+use App\Http\Controllers\Api\BrandController;
 use App\Http\Controllers\BrandsController;
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\CarModelController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\EmisstionController;
 use App\Http\Controllers\EquipmentController;
@@ -26,10 +27,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('cars',CarController::class);
-Route::apiResource('car-brands',BrandsController::class);
-Route::apiResource('car-transmisstion',TransmisstionController::class);
-Route::apiResource('car-equipments',EquipmentController::class);
-Route::apiResource('car-countries',CountryController::class);
-Route::apiResource('car-sellers',SellerController::class);
-Route::apiResource('car-emissions',EmisstionController::class);
+Route::apiResource('/cars',CarController::class);
+Route::apiResource('/car-brands',BrandsController::class);
+Route::apiResource('/car-models',CarModelController::class);
+Route::apiResource('/car-transmisstion',TransmisstionController::class);
+Route::apiResource('/car-equipments',EquipmentController::class);
+Route::apiResource('/car-countries',CountryController::class);
+Route::apiResource('/car-sellers',SellerController::class);
+Route::apiResource('/car-emissions',EmisstionController::class);
+Route::apiResource('/cars-api',BrandController::class);

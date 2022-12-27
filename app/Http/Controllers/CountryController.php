@@ -54,7 +54,7 @@ class CountryController extends Controller
      */
     public function show(Country $country)
     {
-        //
+     return $country;
     }
 
     /**
@@ -86,8 +86,9 @@ class CountryController extends Controller
      * @param  \App\Models\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Country $country)
+    public function destroy(Country $country,$id)
     {
-        //
+        //return $id;
+        return $country;
     }
 }

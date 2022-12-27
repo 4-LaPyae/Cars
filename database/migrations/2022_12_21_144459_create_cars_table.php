@@ -16,12 +16,12 @@ return new class extends Migration
         Schema::create('cars', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->foreignId('brand_id')->constrained();
-            $table->foreignId('country_id')->constrained();
-            $table->foreignId('transmisstion')->constrained();
-            $table->foreignId('equipment_id')->constrained();
-            $table->foreignId('seller_id')->constrained();
-            $table->foreignId('emisstion_id')->constrained();
+            $table->foreignId('brand_id');
+            $table->foreignId('country_id');
+            $table->foreignId('transmisstion');
+            $table->foreignId('equipment_id');
+            $table->foreignId('seller_id');
+            $table->foreignId('emisstion_id');
             $table->string('fuel_type');
             $table->double('mileage');
             $table->string('registration');

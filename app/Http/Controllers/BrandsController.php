@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Brands;
+use App\Models\Car;
 use Illuminate\Http\Request;
 
 class BrandsController extends Controller
@@ -14,6 +15,12 @@ class BrandsController extends Controller
      */
     public function index()
     {
+       return Brands::get();
+        // $brand = request('brand');
+        // $brand = Brands::when($brand,function($q,$brand){
+        //          $q->where("name","like","%$brand%");
+        //      })->get();
+        // return $brand;
         return response()->json([
             "error"=>false,
             "message"=>"brand lists",
@@ -39,7 +46,7 @@ class BrandsController extends Controller
      */
     public function store(Request $request)
     {
-        //return $request;
+        return $request;
         $validator = $request->validate([
             "name"=>"required|string"
         ]);
@@ -60,7 +67,7 @@ class BrandsController extends Controller
      */
     public function show(Brands $brands)
     {
-        //
+      return  $brands;
     }
 
     /**
@@ -71,7 +78,7 @@ class BrandsController extends Controller
      */
     public function edit(Brands $brands)
     {
-        //
+        
     }
 
     /**
@@ -83,7 +90,7 @@ class BrandsController extends Controller
      */
     public function update(Request $request, Brands $brands)
     {
-        //
+        return $brands;
     }
 
     /**
@@ -94,6 +101,7 @@ class BrandsController extends Controller
      */
     public function destroy(Brands $brands)
     {
-        //
+        return $brands;
+        return Brands::where('id')->get();
     }
 }
