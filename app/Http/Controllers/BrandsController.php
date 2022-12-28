@@ -19,7 +19,12 @@ class BrandsController extends Controller
      */
     public function index()
     {
-        //return Brand::get();
+         $brands = Brand::get();
+        return response()->json([
+            "error"=>false,
+            "messagge"=>"brands lists",
+            "data"=>$brands
+        ]);
         $brand = request('make');
         $brands = Brand::when($brand,function($q,$brand){
                      $q->where("name","like","%$brand%");
@@ -133,4 +138,5 @@ class BrandsController extends Controller
         //return $id;
         return Brand::where('id',$id)->get();
     }
+
 }

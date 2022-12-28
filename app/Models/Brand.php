@@ -9,8 +9,14 @@ class Brand extends Model
 {
     use HasFactory;
     protected $fillable = ['name'];
-    protected $with = ['models'];
+    //protected $with = ['models'];
+    protected $appends = [
+        'modelCount'
+    ];
     public function models(){
         return $this->hasMany(CarModel::class);
+    }
+    public function getModelCountAttribute(){
+        return $this->models()->count();
     }
 }
