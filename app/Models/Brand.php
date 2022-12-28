@@ -9,7 +9,7 @@ class Brand extends Model
 {
     use HasFactory;
     protected $fillable = ['name'];
-
+    protected $with = ['models'];
     public function models(){
         return $this->hasMany(CarModel::class);
     }

@@ -19,6 +19,7 @@ class BrandsController extends Controller
      */
     public function index()
     {
+        //return Brand::get();
         $brand = request('make');
         $brands = Brand::when($brand,function($q,$brand){
                      $q->where("name","like","%$brand%");
@@ -86,11 +87,15 @@ class BrandsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Brand $brand)
-    {
-        
-       return response()->json([
+    {    
+        $data = [
         "brand"=>$brand->name,
         "models"=>$brand->models
+        ];
+       return response()->json([
+        "error"=>false,
+        "message"=>"detail",
+        "data"=>$data,
        ]) ;
     }
 
