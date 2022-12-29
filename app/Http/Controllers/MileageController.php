@@ -14,7 +14,7 @@ class MileageController extends Controller
      */
     public function index()
     {
-        //
+        return Mileage::with(['cars'])->get();
     }
 
     /**
@@ -35,7 +35,11 @@ class MileageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator=$request->validate([
+            "mile"=>"required|string"
+        ]);
+        $data = Mileage::create($validator);
+        return response()->json(["error"=>"false","message"=>"create success","data"=>$data],200);
     }
 
     /**
@@ -67,9 +71,13 @@ class MileageController extends Controller
      * @param  \App\Models\Mileage  $mileage
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Mileage $mileage)
+    public function update(Request $request,$id)
     {
-        //
+        $data =[
+            "mile"=>$request->mile
+        ];
+        $update= Mileage::where('id',$id)->update($data);
+      return response()->json(["error"=>"false","message"=>"update success","data"=>$update],200);
     }
 
     /**
@@ -78,8 +86,9 @@ class MileageController extends Controller
      * @param  \App\Models\Mileage  $mileage
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Mileage $mileage)
+    public function destroy($id)
     {
-        //
+        $delete = Mileage::where('id',$id)->delete();
+        return response()->json(["error"=>"false","message"=>"delete success","data"=>$delete],200);
     }
 }

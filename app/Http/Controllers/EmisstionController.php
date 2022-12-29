@@ -14,7 +14,7 @@ class EmisstionController extends Controller
      */
     public function index()
     {
-        return Emisstion::get();
+        return Emisstion::with(['cars'])->get();
     }
 
     /**

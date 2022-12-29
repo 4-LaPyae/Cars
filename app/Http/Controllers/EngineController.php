@@ -14,7 +14,7 @@ class EngineController extends Controller
      */
     public function index()
     {
-        //
+        return Engine::with(['cars'])->get();
     }
 
     /**
@@ -35,7 +35,11 @@ class EngineController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = $request->validate([
+            "size"=> "required|string"
+        ]);
+        $data = Engine::create($validator);
+        return response()->json(["error"=>"false","message"=>"create success","data"=>$data],200);
     }
 
     /**
@@ -67,9 +71,14 @@ class EngineController extends Controller
      * @param  \App\Models\Engine  $engine
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Engine $engine)
+    public function update(Request $request, $id)
     {
-        //
+       $data=[
+        "size"=>$request->size
+       ];
+      $update= Engine::where('id',$id)->update($data);
+      return response()->json(["error"=>"false","message"=>"update success","data"=>$update],200);
+
     }
 
     /**
@@ -78,8 +87,9 @@ class EngineController extends Controller
      * @param  \App\Models\Engine  $engine
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Engine $engine)
+    public function destroy($id)
     {
-        //
+      $delete = Engine::where('id',$id)->delete();
+      return response()->json(["error"=>"false","message"=>"delete success","data"=>$delete],200);
     }
 }

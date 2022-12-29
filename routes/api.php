@@ -1,18 +1,27 @@
 <?php
-use App\Http\Controllers\Api\BrandController;
-use App\Http\Controllers\BrandsController;
+use Illuminate\Http\Request;
+use App\Models\Transmisstion;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarController;
-use App\Http\Controllers\CarModelController;
+use App\Http\Controllers\PriceController;
+use App\Http\Controllers\BrandsController;
+use App\Http\Controllers\EngineController;
+use App\Http\Controllers\SellerController;
 use App\Http\Controllers\CountryController;
+use App\Http\Controllers\MileageController;
+use App\Http\Controllers\BodyTypeController;
+use App\Http\Controllers\CarModelController;
+use App\Http\Controllers\FuelTypeController;
+use App\Http\Controllers\Api\BrandController;
+use App\Http\Controllers\ColourController;
+use App\Http\Controllers\DamageController;
 use App\Http\Controllers\EmisstionController;
 use App\Http\Controllers\EquipmentController;
+
 use App\Http\Controllers\PowerHpController;
 use App\Http\Controllers\PowerKwController;
-use App\Http\Controllers\SellerController;
+use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\TransmisstionController;
-use App\Models\Transmisstion;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,3 +49,11 @@ Route::apiResource('/car-emissions',EmisstionController::class);
 Route::apiResource('/cars-api',BrandController::class);
 Route::apiResource('/powerhp',PowerHpController::class);
 Route::apiResource('/powerkw',PowerKwController::class);
+Route::apiResource('/fuels',FuelTypeController::class);
+Route::apiResource('/bodytype',BodyTypeController::class);
+Route::apiResource('/price',PriceController::class);
+Route::apiResource('/engine',EngineController::class);
+Route::apiResource('/mile',MileageController::class);
+Route::apiResource('/colours',ColourController::class);
+Route::apiResource('/damages',DamageController::class);
+Route::apiResource('/registrations',RegistrationController::class);

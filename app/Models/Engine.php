@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Engine extends Model
 {
     use HasFactory;
+    protected $fillable=[
+        "size"
+    ];
+
+    public function cars(){
+        return $this->hasMany(Car::class);
+    }
 }

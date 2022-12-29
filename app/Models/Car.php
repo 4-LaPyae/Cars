@@ -29,11 +29,24 @@ class Car extends Model
         'damage_id',
     ];
 
-    protected function price()
-    {
-        return Attribute::make(
-            get: fn ($value) => $value . "MMK",
-        );
+
+    public function powerhp(){
+        return $this->belongsTo(PowerHp::class);
+    }
+    public function powerkw(){
+        return $this->belongsTo(PowerKw::class);
+    }
+    public function colour(){
+        return $this->belongsTo(Colour::class);
+    }
+    public function country(){
+        return $this->belongsTo(Country::class);
+    }
+    public function damage(){
+        return $this->belongsTo(Damage::class);
+    }
+    public function emisstion(){
+        return $this->belongsTo(Emisstion::class);
     }
 
 }

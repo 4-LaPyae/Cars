@@ -14,7 +14,7 @@ class CountryController extends Controller
      */
     public function index()
     {
-        return Country::get();
+        return Country::with(['cars'])->get();
     }
 
     /**

@@ -14,7 +14,7 @@ class SellerController extends Controller
      */
     public function index()
     {
-        return Seller::get();
+        return Seller::with(['cars'])->get();
     }
 
     /**

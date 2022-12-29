@@ -9,4 +9,8 @@ class Registration extends Model
 {
     use HasFactory;
     protected $fillable = ['year'];
+
+    public function cars(){
+        return $this->hasMany(Car::class);
+    }
 }

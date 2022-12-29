@@ -14,7 +14,7 @@ class BodyTypeController extends Controller
      */
     public function index()
     {
-        //
+      return BodyType::get();
     }
 
     /**
@@ -35,7 +35,12 @@ class BodyTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validator = $request->validate([
+            "type"=>"required|string"
+        ]);
+        $data = BodyType::create($validator);
+        return response()->json(["error"=>"false","message"=>"create success","data"=>$data]);
     }
 
     /**
@@ -67,9 +72,14 @@ class BodyTypeController extends Controller
      * @param  \App\Models\BodyType  $bodyType
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BodyType $bodyType)
+    public function update(Request $request, BodyType $bodyType,$id)
     {
-        //
+        $data = [
+           "type"=>$request->type
+        ];
+        $update = BodyType::where('id',$id)->update($data);
+        return response()->json(["error"=>"false","message"=>"create success","data"=>$update]);
+
     }
 
     /**
@@ -78,8 +88,9 @@ class BodyTypeController extends Controller
      * @param  \App\Models\BodyType  $bodyType
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BodyType $bodyType)
+    public function destroy(BodyType $bodyType, $id)
     {
-        //
+        $data = BodyType::where('id',$id)->delete();
+        return response()->json(["error"=>"false","message"=>"delete success","data"=>$data]);
     }
 }

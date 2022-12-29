@@ -61,7 +61,7 @@ class BrandsController extends Controller
      */
     public function create()
     {
-        
+
     }
 
     /**
@@ -72,7 +72,7 @@ class BrandsController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+        // return $request;
         $validator = $request->validate([
             "name"=>"required|string"
         ]);
@@ -92,7 +92,7 @@ class BrandsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Brand $brand)
-    {    
+    {
         $data = [
         "brand"=>$brand->name,
         "models"=>$brand->models
@@ -112,7 +112,7 @@ class BrandsController extends Controller
      */
     public function edit(Brand $brands)
     {
-        
+
     }
 
     /**

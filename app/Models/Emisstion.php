@@ -9,4 +9,8 @@ class Emisstion extends Model
 {
     use HasFactory;
     protected $fillable=['standard'];
+
+    public function cars(){
+        return $this->hasMany(Car::class);
+    }
 }

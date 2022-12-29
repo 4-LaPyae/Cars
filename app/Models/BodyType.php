@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class BodyType extends Model
 {
     use HasFactory;
+    protected $fillable=[
+        "type"
+    ];
 }
