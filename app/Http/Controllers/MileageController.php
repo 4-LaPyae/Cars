@@ -39,7 +39,7 @@ class MileageController extends Controller
             "mile"=>"required|string"
         ]);
         $data = Mileage::create($validator);
-        return response()->json(["error"=>"false","message"=>"create success","data"=>$data],200);
+        return response()->json($data, 200);
     }
 
     /**
@@ -71,13 +71,13 @@ class MileageController extends Controller
      * @param  \App\Models\Mileage  $mileage
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request, Mileage $mileage , $id)
     {
-        $data =[
-            "mile"=>$request->mile
-        ];
-        $update= Mileage::where('id',$id)->update($data);
-      return response()->json(["error"=>"false","message"=>"update success","data"=>$update],200);
+      $data = [
+         "mile"=>$request->mile
+      ];
+      $update = Mileage::where('id',$id)->update($data);
+      return response()->json(["error"=>"false","message"=>"update success","data"=>$update]);
     }
 
     /**
@@ -86,9 +86,9 @@ class MileageController extends Controller
      * @param  \App\Models\Mileage  $mileage
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Mileage $mileage,$id)
     {
-        $delete = Mileage::where('id',$id)->delete();
-        return response()->json(["error"=>"false","message"=>"delete success","data"=>$delete],200);
+       $delete = Mileage::where('id',$id)->delete();
+       return response()->json(["error"=>"false","message"=>"delete success","data"=>$delete]);
     }
 }

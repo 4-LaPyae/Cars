@@ -72,7 +72,7 @@ class BrandsController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request;
+
         $validator = $request->validate([
             "name"=>"required|string"
         ]);
@@ -122,9 +122,17 @@ class BrandsController extends Controller
      * @param  \App\Models\Brands  $brands
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Brand $brands)
+    public function update(Request $request, Brand $brands,$id)
     {
-        return $brands;
+        $data=[
+            "name"=>$request->name
+        ];
+        $update=Brand::where('id',$id)->update($data);
+        return response()->json([
+            "error"=>false,
+            "message"=>"brand is updated.",
+            "data"=>$update
+        ]);
     }
 
     /**
@@ -135,8 +143,12 @@ class BrandsController extends Controller
      */
     public function destroy($id)
     {
-        //return $id;
-        return Brand::where('id',$id)->get();
+        $delete=Brand::where('id',$id)->delete();
+        return response()->json([
+            "error"=>false,
+            "message"=>"brand is deleted",
+            "data"=>$delete
+        ]);
     }
 
 }

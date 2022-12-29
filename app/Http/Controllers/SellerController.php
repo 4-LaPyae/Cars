@@ -75,9 +75,17 @@ class SellerController extends Controller
      * @param  \App\Models\Seller  $seller
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Seller $seller)
+    public function update(Request $request, Seller $seller,$id)
     {
-        //
+        $data = [
+            "name"=>$request->name
+        ];
+        $update = Seller::where('id',$id)->update($data);
+         return response()->json([
+            "error"=>"false",
+            "message"=>"update success",
+            "data"=>$update
+         ]);
     }
 
     /**
@@ -86,8 +94,13 @@ class SellerController extends Controller
      * @param  \App\Models\Seller  $seller
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Seller $seller)
+    public function destroy(Seller $seller,$id)
     {
-        //
+        $delete = Seller::where('id',$id)->delete();
+         return response()->json([
+            "error"=>"false",
+            "message"=>"delete success",
+            "data"=>$delete
+         ]);
     }
 }

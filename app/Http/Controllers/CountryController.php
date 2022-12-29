@@ -75,9 +75,13 @@ class CountryController extends Controller
      * @param  \App\Models\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Country $country)
+    public function update(Request $request, Country $country,$id)
     {
-        //
+        $data=[
+            "name"=>$request->name
+        ];
+       $update= Country::where('id',$id)->update($data);
+       return response()->json(["error"=>'false','message'=>'update success','data'=>$update],200);
     }
 
     /**
@@ -88,7 +92,7 @@ class CountryController extends Controller
      */
     public function destroy(Country $country,$id)
     {
-        //return $id;
-        return $country;
+       $delete = Country::where('id',$id)->delete();
+       return response()->json(["error"=>'false','message'=>'delete success','data'=>$delete],200);
     }
 }
