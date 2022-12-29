@@ -12,7 +12,7 @@ class CarModelController extends Controller
         $models = CarModel::when($model,function($q,$model){
                      $q->where("name","like","%$model%");
               })->get();
-       //retur4n view('models.index',compact('models')); 
+       //retur4n view('models.index',compact('models'));
        return $models;
     }
 }

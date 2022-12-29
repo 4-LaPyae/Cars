@@ -24,7 +24,7 @@ class TransmisstionController extends Controller
      */
     public function create()
     {
-        
+
 
     }
 
@@ -36,6 +36,7 @@ class TransmisstionController extends Controller
      */
     public function store(Request $request)
     {
+        return "hello";
         $validator = $request->validate([
             "name"=>"required|string"
         ]);

@@ -1,16 +1,17 @@
 <?php
-use App\Http\Controllers\Api\BrandController;
-use App\Http\Controllers\BrandsController;
+use Illuminate\Http\Request;
+use App\Models\Transmisstion;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarController;
-use App\Http\Controllers\CarModelController;
+use App\Http\Controllers\BrandsController;
+use App\Http\Controllers\SellerController;
 use App\Http\Controllers\CountryController;
+use App\Http\Controllers\CarModelController;
+use App\Http\Controllers\FuelTypeController;
+use App\Http\Controllers\Api\BrandController;
 use App\Http\Controllers\EmisstionController;
 use App\Http\Controllers\EquipmentController;
-use App\Http\Controllers\SellerController;
 use App\Http\Controllers\TransmisstionController;
-use App\Models\Transmisstion;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,3 +37,4 @@ Route::apiResource('/car-countries',CountryController::class);
 Route::apiResource('/car-sellers',SellerController::class);
 Route::apiResource('/car-emissions',EmisstionController::class);
 Route::apiResource('/cars-api',BrandController::class);
+Route::apiResource('/fuels',FuelTypeController::class);

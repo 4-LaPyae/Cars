@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\FuelType;
 use Illuminate\Http\Request;
+use App\Http\Resources\CarRes;
+use App\Http\Resources\CarResource;
+
+
 
 class FuelTypeController extends Controller
 {
@@ -14,7 +18,7 @@ class FuelTypeController extends Controller
      */
     public function index()
     {
-        //
+        return FuelType::get();
     }
 
     /**
@@ -35,7 +39,12 @@ class FuelTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return $request;
+        $validator=$request->validate([
+            "name"=>"required|string"
+        ]);
+        $data = FuelType::create($validator);
+        return response()->json(["error"=>"false","message"=>'create success','data'=>$data]);
     }
 
     /**
@@ -67,9 +76,14 @@ class FuelTypeController extends Controller
      * @param  \App\Models\FuelType  $fuelType
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, FuelType $fuelType)
+    public function update(Request $request, FuelType $fuelType ,$id)
     {
-        //
+
+        $data = [
+            "name"=>$request->name
+        ];
+       $fuel = FuelType::where('id',$id)->update($data);
+       return response()->json(["error"=>"false","message"=>"update success","data"=>$fuel],200);
     }
 
     /**
@@ -78,8 +92,10 @@ class FuelTypeController extends Controller
      * @param  \App\Models\FuelType  $fuelType
      * @return \Illuminate\Http\Response
      */
-    public function destroy(FuelType $fuelType)
+    public function destroy(FuelType $fuelType,$id)
     {
-        //
+      $data = FuelType::where('id',$id)->get();
+      $delete = FuelType::where('id',$id)->delete();
+      return response()->json(["error"=>"false","message"=>"delete success","data"=>$delete],200);
     }
 }
