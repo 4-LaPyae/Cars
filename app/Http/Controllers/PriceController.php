@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use update;
 use App\Models\Price;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class PriceController extends Controller
      */
     public function index()
     {
-        //
+       return Price::get();
     }
 
     /**
@@ -35,7 +36,13 @@ class PriceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validator=$request->validate([
+            "price"=>"required"
+        ]);
+       $data= Price::create($validator);
+       return response()->json(["error"=>"false","message"=>"create success","data"=>$data]);
+
     }
 
     /**
@@ -57,7 +64,7 @@ class PriceController extends Controller
      */
     public function edit(Price $price)
     {
-        //
+   //
     }
 
     /**
@@ -67,9 +74,15 @@ class PriceController extends Controller
      * @param  \App\Models\Price  $price
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Price $price)
+    public function update(Request $request,$id)
     {
-        //
+
+        $data = [
+            "price"=>$request->price
+        ];
+
+       $price = Price::where('id',$id)->update($data);
+       return response()->json(["error"=>"false","message"=>"update success","data"=>$price],200);
     }
 
     /**
@@ -78,8 +91,10 @@ class PriceController extends Controller
      * @param  \App\Models\Price  $price
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Price $price)
+    public function destroy($id)
     {
-        //
+
+       $delete = Price::where('id',$id)->delete();
+       return response()->json(["error"=>"false","message"=>"delete success","data"=>$delete],200);
     }
 }

@@ -75,9 +75,14 @@ class EquipmentController extends Controller
      * @param  \App\Models\Equipment  $equipment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Equipment $equipment)
+    public function update(Request $request,$id)
     {
-        //
+        return $request;
+        $data =[
+            "name"=>$request->name
+        ];
+        $update= Mileage::where('id',$id)->update($data);
+      return response()->json(["error"=>"false","message"=>"update success","data"=>$update],200);
     }
 
     /**
