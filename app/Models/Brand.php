@@ -19,4 +19,5 @@ class Brand extends Model
     public function getModelCountAttribute(){
         return $this->models()->count();
     }
+    
 }

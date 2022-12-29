@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('power_kw_controllers', function (Blueprint $table) {
+        Schema::create('colours', function (Blueprint $table) {
             $table->id();
-            $table->string('kw');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('power_kw_controllers');
+        Schema::dropIfExists('colours');
     }
 };

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('prices', function (Blueprint $table) {
             $table->id();
-            $table->double('current_price');
+            $table->double('amount');
             $table->timestamps();
         });
     }

@@ -24,15 +24,16 @@ class CarResource extends JsonResource
                 'equipment'=>$this->equipment,
                 'seller'=>$this->seller,
                 'standard'=>$this->standard,
-                'fuel_type'=>$this->fuel_type,
+                'fuel_type'=>$this->fueltype,
                 'mileage'=>$this->mileage,
-                'registration'=>$this->registration,
+                'register_year'=>$this->register_year,
                 'engine_size'=>$this->engine_size."cc",
-                'power'=>$this->power."hp",
+                'powerhp'=>$this->powerhp."hp",
+                'powerkw'=>$this->powerkw."kw",
                 'body_type'=>$this->body_type,
-                'price'=>"$".$this->price,
+                'price'=>"$ ".$this->price,
                 'colour'=>$this->colour,
-                'damage'=>$this->damange,
+                'damage'=>$this->damage,
                 ]     
         ;
     }

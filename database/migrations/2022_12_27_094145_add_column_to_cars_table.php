@@ -14,12 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::table('cars', function (Blueprint $table) {
-           $table->integer('powerhpfrom_id');
-           $table->integer('powerhpto_id');
-           $table->integer('powerkwfrom_id');
-           $table->integer('powerkwto_id');
-           $table->integer('mileagefrom_id');
-           $table->integer('mileageto_id');
+            $table->foreignId('mileage_id');
+           $table->foreignId('powerhp_id');
+           $table->foreignId('powerkw_id');
+           $table->foreignId('bodytype_id');
+           $table->foreignId('fueltype_id');   
         });
     }
 
@@ -31,8 +30,12 @@ return new class extends Migration
     public function down()
     {
         Schema::table('cars', function (Blueprint $table) {
-            $table->double('power');
-            //
+            $table->foreignId('mileage_id');
+            $table->dropColumn('powerhp_id');
+            $table->dropColumn('powerkw_id');
+            $table->dropColumn('bodytype_id');
+            $table->dropColumn('fueltype_id');
+
         });
     }
 };

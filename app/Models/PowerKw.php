@@ -9,4 +9,8 @@ class PowerKw extends Model
 {
     use HasFactory;
     protected $fillable = ["kw"];
+
+    public function cars(){
+        return $this->hasMany(Car::class,'powerkw_id');
+    }
 }

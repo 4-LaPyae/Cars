@@ -9,4 +9,10 @@ class PowerHp extends Model
 {
     use HasFactory;
     protected $fillable = ['hp'];
+    //protected $primaryKey = 'power_hp_id';
+    //protected $with = ['cars'];
+    public function cars(){
+        return $this->hasMany(Car::class,'powerhp_id');
+    }
+    
 }

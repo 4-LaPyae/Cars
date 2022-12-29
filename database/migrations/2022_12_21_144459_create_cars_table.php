@@ -18,20 +18,16 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->foreignId('brand_id');
             $table->foreignId('country_id');
-            $table->foreignId('transmisstion');
+            $table->foreignId('transmisstion_id');
             $table->foreignId('equipment_id');
             $table->foreignId('seller_id');
             $table->foreignId('emisstion_id');
-            $table->string('fuel_type');
-            $table->double('mileage');
-            $table->string('registration');
-            $table->integer('engine_size');
-            $table->integer('power');
+            $table->string('registration_id');
+            $table->integer('engine_id');
             $table->timestamps();
-            $table->string('body_type');
-            $table->double('price');
-            $table->string('colour');
-            $table->string('damange');
+            $table->double('price_id');
+            $table->string('colour_id');
+            $table->string('damage_id');
         });
     }
 
