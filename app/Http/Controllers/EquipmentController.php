@@ -75,13 +75,14 @@ class EquipmentController extends Controller
      * @param  \App\Models\Equipment  $equipment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request,Equipment $equipment,$id)
     {
-        return $request;
+
         $data =[
             "name"=>$request->name
         ];
-        $update= Mileage::where('id',$id)->update($data);
+
+        $update= Equipment::where('id',$id)->update($data);
       return response()->json(["error"=>"false","message"=>"update success","data"=>$update],200);
     }
 
@@ -91,8 +92,9 @@ class EquipmentController extends Controller
      * @param  \App\Models\Equipment  $equipment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Equipment $equipment)
+    public function destroy(Equipment $equipment,$id)
     {
-        //
+        $data = Equipment::where('id',$id)->delete();
+        return response()->json(["error"=>"false","message"=>"delete success","data"=>$data],200);
     }
 }

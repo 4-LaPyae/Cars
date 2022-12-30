@@ -36,7 +36,7 @@ class TransmisstionController extends Controller
      */
     public function store(Request $request)
     {
-        return "hello";
+
         $validator = $request->validate([
             "name"=>"required|string"
         ]);
@@ -77,9 +77,13 @@ class TransmisstionController extends Controller
      * @param  \App\Models\Transmisstion  $transmisstion
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Transmisstion $transmisstion)
+    public function update(Request $request, Transmisstion $transmisstion,$id)
     {
-        //
+        $data=[
+            "name"=>$request->name
+        ];
+        $update = Transmisstion::where('id',$id)->update($data);
+        return response()->json(["error"=>"false","message"=>"update success","data"=>$update],200);
     }
 
     /**
@@ -88,8 +92,9 @@ class TransmisstionController extends Controller
      * @param  \App\Models\Transmisstion  $transmisstion
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Transmisstion $transmisstion)
+    public function destroy(Transmisstion $transmisstion, $id)
     {
-        //
+      $delete=Transmisstion::where('id',$id)->delete();
+      return response()->json(["error"=>"false","message"=>"delete success","data"=>$delete],200);
     }
 }
