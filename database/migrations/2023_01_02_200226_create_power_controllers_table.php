@@ -13,9 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('power_hps', function (Blueprint $table) {
+        Schema::create('power_controllers', function (Blueprint $table) {
             $table->id();
-            $table->string('hp');
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('power_hps');
+        Schema::dropIfExists('power_controllers');
     }
 };
