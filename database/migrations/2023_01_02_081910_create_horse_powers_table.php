@@ -13,10 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('powers', function (Blueprint $table) {
+        Schema::create('horse_powers', function (Blueprint $table) {
             $table->id();
-            $table->string("hp");
-            $table->string("kw");
+            $table->string('fromhp_id');
+            $table->string('tohp_id');
+            $table->string('fromkw_id');
+            $table->string('tokw_id');
+            $table->foreignId('car_id');
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('powers');
+        Schema::dropIfExists('horse_powers');
     }
 };

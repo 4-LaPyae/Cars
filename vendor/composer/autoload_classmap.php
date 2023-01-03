@@ -27,6 +27,7 @@ return array(
     'App\\Http\\Controllers\\RegistrationController' => $baseDir . '/app/Http/Controllers/RegistrationController.php',
     'App\\Http\\Controllers\\SellerController' => $baseDir . '/app/Http/Controllers/SellerController.php',
     'App\\Http\\Controllers\\TransmisstionController' => $baseDir . '/app/Http/Controllers/TransmisstionController.php',
+    'App\\Http\\Controllers\\User\\AuthController' => $baseDir . '/app/Http/Controllers/User/AuthController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\EncryptCookies' => $baseDir . '/app/Http/Middleware/EncryptCookies.php',
@@ -53,8 +54,16 @@ return array(
     'App\\Models\\Engine' => $baseDir . '/app/Models/Engine.php',
     'App\\Models\\Equipment' => $baseDir . '/app/Models/Equipment.php',
     'App\\Models\\FuelType' => $baseDir . '/app/Models/FuelType.php',
+    'App\\Models\\HorsePower' => $baseDir . '/app/Models/HorsePower.php',
     'App\\Models\\Mileage' => $baseDir . '/app/Models/Mileage.php',
+<<<<<<< HEAD
     'App\\Models\\PowerController' => $baseDir . '/app/Models/PowerController.php',
+=======
+    'App\\Models\\PowerHp' => $baseDir . '/app/Models/PowerHp.php',
+    'App\\Models\\PowerHpController' => $baseDir . '/app/Models/PowerHpController.php',
+    'App\\Models\\PowerKw' => $baseDir . '/app/Models/PowerKw.php',
+    'App\\Models\\PowerKwController' => $baseDir . '/app/Models/PowerKwController.php',
+>>>>>>> f66d070065dcbc9e185f2fdc23a467143ad16628
     'App\\Models\\Price' => $baseDir . '/app/Models/Price.php',
     'App\\Models\\Registration' => $baseDir . '/app/Models/Registration.php',
     'App\\Models\\Seller' => $baseDir . '/app/Models/Seller.php',

@@ -17,8 +17,8 @@ return new class extends Migration
             $table->foreignId('mileage_id');
            $table->foreignId('powerhp_id');
            $table->foreignId('powerkw_id');
-           $table->foreignId('bodytype_id');
-           $table->foreignId('fueltype_id');   
+           $table->foreignId('bodytype_id')->nullable();
+           $table->foreignId('fueltype_id')->nullable();   
         });
     }
 

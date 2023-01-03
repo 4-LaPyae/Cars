@@ -19,8 +19,8 @@ class CarController extends Controller
     {
         //return Car::get();
         $keyword = request("keyword");
-     $cars = DB::table('cars')
-            ->leftJoin('brands','brands.id','=','cars.brand_id')
+     $cars = Car::
+            leftJoin('brands','brands.id','=','cars.brand_id')
             ->leftJoin('countries','countries.id','=','cars.country_id')
             ->leftJoin('transmisstions','transmisstions.id','=','cars.transmisstion_id')
             ->leftJoin('equipment','equipment.id','=','cars.equipment_id')

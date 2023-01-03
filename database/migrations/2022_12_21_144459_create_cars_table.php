@@ -22,12 +22,12 @@ return new class extends Migration
             $table->foreignId('equipment_id');
             $table->foreignId('seller_id');
             $table->foreignId('emisstion_id');
-            $table->string('registration_id');
+            $table->integer('registration_id');
             $table->integer('engine_id');
             $table->timestamps();
             $table->double('price_id');
-            $table->string('colour_id');
-            $table->string('damage_id');
+            $table->integer('colour_id');
+            $table->integer('damage_id');
         });
     }
 
