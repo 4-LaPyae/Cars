@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('horse_powers', function (Blueprint $table) {
+        Schema::create('kilo_watts', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('fromhp_id');
-            $table->unsignedBigInteger('tohp_id');
+            $table->unsignedBigInteger('fromkw_id');
+            $table->unsignedBigInteger('tokw_id');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('horse_powers');
+        Schema::dropIfExists('kilo_watts');
     }
 };

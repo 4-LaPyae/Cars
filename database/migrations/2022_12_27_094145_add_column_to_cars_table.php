@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::table('cars', function (Blueprint $table) {
             $table->foreignId('mileage_id');
-           $table->foreignId('powerhp_id');
-           $table->foreignId('powerkw_id');
+           $table->foreignId('horse_power_id');
+           $table->foreignId('kilo_watt_id');
            $table->foreignId('bodytype_id')->nullable();
            $table->foreignId('fueltype_id')->nullable();   
         });
