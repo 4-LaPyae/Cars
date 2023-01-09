@@ -15,8 +15,11 @@ return new class extends Migration
     {
         Schema::create('horse_powers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('fromhp_id');
-            $table->unsignedBigInteger('tohp_id');
+            $table->string('fromhp_id');
+            $table->string('tohp_id');
+            $table->string('fromkw_id');
+            $table->string('tokw_id');
+            $table->foreignId('car_id');
             $table->timestamps();
         });
     }

@@ -3,26 +3,28 @@ use Illuminate\Http\Request;
 use App\Models\Transmisstion;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\PowerController;
 use App\Http\Controllers\PriceController;
 use App\Http\Controllers\BrandsController;
+use App\Http\Controllers\ColourController;
+use App\Http\Controllers\DamageController;
 use App\Http\Controllers\EngineController;
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\MileageController;
+use App\Http\Controllers\PowerHpController;
+use App\Http\Controllers\PowerKwController;
 use App\Http\Controllers\BodyTypeController;
 use App\Http\Controllers\CarModelController;
 use App\Http\Controllers\FuelTypeController;
+
 use App\Http\Controllers\Api\BrandController;
-use App\Http\Controllers\ColourController;
-use App\Http\Controllers\DamageController;
 use App\Http\Controllers\EmisstionController;
 use App\Http\Controllers\EquipmentController;
-
-use App\Http\Controllers\PowerHpController;
-use App\Http\Controllers\PowerKwController;
+use App\Http\Controllers\User\AuthController;
+use App\Http\Controllers\HorsePowerController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\TransmisstionController;
-use App\Http\Controllers\User\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,7 +46,7 @@ Route::post('/register',[AuthController::class,'register'])->name('auth.register
 
 Route::middleware('auth:sanctum')->group(function(){
     Route::post('/logout',[AuthController::class,'logout'])->name('auth.logout');
-    
+
     //Route::apiResource('/registrations',RegistrationController::class);
 });
     Route::apiResource('/cars',CarController::class);
@@ -65,4 +67,6 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::apiResource('/mile',MileageController::class);
     Route::apiResource('/colours',ColourController::class);
     Route::apiResource('/damages',DamageController::class);
-    Route::get('/car-lists',[CarController::class,'searchCars']);
+
+    Route::apiResource('/power',PowerController::class);
+    Route::apiResource('/HpPower',HorsePowerController::class);

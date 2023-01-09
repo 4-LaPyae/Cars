@@ -5,8 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PowerHpController extends Model
+class c extends Model
 {
     use HasFactory;
-    protected $fillable = ["name"];
 }

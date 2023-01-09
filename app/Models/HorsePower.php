@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class HorsePower extends Model
 {
     use HasFactory;
-    protected $fillable = ['fromhp_id','tohp_id','car_id'];
-    
+    protected $fillable = ['fromhp_id','tohp_id','fromkw_id','tokw_id','car_id'];
+
 }
