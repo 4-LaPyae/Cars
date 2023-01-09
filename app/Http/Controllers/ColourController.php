@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 class ColourController extends Controller
 {
     public function index(){
-        return Colour::with(['cars'])->get();
+        return Colour::with(['cars'])
+                ->when();
     }
 }

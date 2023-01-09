@@ -65,3 +65,4 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::apiResource('/mile',MileageController::class);
     Route::apiResource('/colours',ColourController::class);
     Route::apiResource('/damages',DamageController::class);
+    Route::get('/car-lists',[CarController::class,'searchCars']);

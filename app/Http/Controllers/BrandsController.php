@@ -20,6 +20,7 @@ class BrandsController extends Controller
     public function index()
     {
          $brands = Brand::get();
+         //return $brands;
         return response()->json([
             "error"=>false,
             "messagge"=>"brands lists",

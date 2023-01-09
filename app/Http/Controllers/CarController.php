@@ -44,7 +44,7 @@ class CarController extends Controller
             'damages.name as damage','mileages.mile as mileage','body_types.type as body_type')
             ->get();
 
-       //return $cars;
+       return $cars;
         // $cars = Car::when($keyword,function($q,$keyword){
         //     $q->where("name","like","%$keyword%");
         // })->get();
@@ -173,5 +173,21 @@ class CarController extends Controller
     {
          $car = Car::findOrFail($id); 
          $car->delete();       
+    }
+
+    public function searchCars(Request $request){
+        $cars = Car::select("*")
+        ->when($request->has('name'), function ($query) use ($request) {
+            $query->where('name', 'LIKE', '%' . $request->name .'%');
+        })
+        //->leftJoin('brands','brands.id','=','cars.brand_id')
+        ->get();
+       // $carlists = CarResource::collection($cars);
+        return $cars;       
+        return response()->json([
+            "error"=>false,
+            "message"=>"cars lists",
+            "data"=>$carlists
+        ]);
     }
 }

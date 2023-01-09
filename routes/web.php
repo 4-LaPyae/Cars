@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\BrandController;
+use App\Http\Controllers\BrandsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/brands',[BrandsController::class,'index']);
